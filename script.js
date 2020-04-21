@@ -3,7 +3,7 @@ let displayTitle = document.getElementById('displayTitle');
 let contentBox = document.getElementById('displayContent');
 let cycleSlider = document.getElementById('cycleSlider');
 let continueButton = document.getElementById('continueButton');
-let duration = 0;
+let duration = 15;
 let breakTime = 0;
 let timerDisplay = document.createElement('span')
 let cycleCounter = 0;
@@ -69,7 +69,7 @@ function displayResults() {
 }
 
 function setUpWorkTimer(limit){
-  limit *= 1;
+  limit *= 60;
   timerDisplay.innerHTML = `${parseInt(limit /60, 10)}:${parseInt(limit % 60, 10)}`;
   let countdown = setInterval(()=>{
     timerDisplay.innerHTML = `${parseInt(limit /60, 10)}:${parseInt(limit % 60, 10)}`;
@@ -183,9 +183,31 @@ function counterOption(){
 }
 
 
-/*
+
 cycleSlider.oninput = () =>{
   setduration()
 }
-*/
+
 continueButton.addEventListener('click', counterOption);
+
+const allRanges = document.querySelectorAll(".range-wrap");
+allRanges.forEach(wrap => {
+  const range = wrap.querySelector(".range");
+  const bubble = wrap.querySelector(".bubble");
+
+  range.addEventListener("input", () => {
+    setBubble(range, bubble);
+  });
+  setBubble(range, bubble);
+});
+
+function setBubble(range, bubble) {
+  const val = range.value;
+  const min = range.min ? range.min : 0;
+  const max = range.max ? range.max : 100;
+  const newVal = Number(((val - min) * 100) / (max - min));
+  bubble.innerHTML = `${duration}<br> Minutes`;
+
+  // Sorta magic numbers based on size of the native UI thumb
+  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+}
