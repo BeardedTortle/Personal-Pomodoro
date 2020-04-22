@@ -4,6 +4,7 @@ let contentBox = document.getElementById('displayContent');
 let cycleSlider = document.getElementById('cycleSlider');
 let continueButton = document.getElementById('continueButton');
 let duration = 15;
+
 let breakTime = 0;
 let timerDisplay = document.createElement('span')
 let cycleCounter = 0;
@@ -24,7 +25,7 @@ taskBoard.setAttribute('id', 'taskBoard');
 
 function updateDisplay(){
   contentBox.innerHTML = '';
-  displayTitle.innerHTML = '';
+  displayTitle.innerHTML = '<h2>Time to Work</h2>';
   contentBox.appendChild(timerDisplay);
   contentBox.appendChild(cycleCounterDisplay);
   contentBox.appendChild(stopButton);
@@ -37,7 +38,7 @@ function updateDisplay(){
 function displayResults() {
   let resultBox = document.createElement('div')
   let refreshButton = document.createElement('a');
-
+  displayTitle.innerHTML = '<h2>Great Work!</h2>'
   refreshButton.innerHTML = 'Restart'
   refreshButton.setAttribute('id', 'refreshButton')
   refreshButton.setAttribute('href', 'javascript:history.go(0)')
@@ -79,11 +80,11 @@ function setUpWorkTimer(limit){
     limit--
     console.log(limit)
     }else {
-      displayTitle.innerText= 'Break Time'
+      displayTitle.innerHTML= '<h2>Break Time</h2>'
       clearInterval(countdown);
       setUpBreakTimer(breakTime);
       cycleCounter++;
-      cycleCounterDisplay.innerHTML = `${cycleCounter}`
+      cycleCounterDisplay.innerHTML = `Cycles: ${cycleCounter}`
     }
   }, 1000)
   
@@ -99,7 +100,7 @@ function setUpBreakTimer(breakLimit){
       breakLimit--
     console.log(breakLimit)
     }else {
-      displayTitle.innerText= 'Back To Work!'
+      displayTitle.innerHTML= '<h2>Back To Work!</h2>'
       clearInterval(countdown);
       setUpWorkTimer(duration);
     }
@@ -182,7 +183,9 @@ function counterOption(){
   yesButton.addEventListener('click', tasks);
 }
 
-
+window.onload = () => {
+  cycleSlider.value = 1;
+}
 
 cycleSlider.oninput = () =>{
   setduration()
