@@ -185,6 +185,7 @@ function counterOption(){
 
 window.onload = () => {
   cycleSlider.value = 1;
+  setBubble();
 }
 
 cycleSlider.oninput = () =>{
