@@ -1,3 +1,4 @@
+
 body{
     margin: auto;
     background-color: #eee;
@@ -7,7 +8,7 @@ body{
 
 }
 h1{
-    color: rgba(255,155,155, .75);
+    color: rgba(255, 0, 0, 0.75);
     text-transform: uppercase;
 }
 .range-wrap {
@@ -48,10 +49,12 @@ body {
   padding: 3em;
   background-color: rgba(0,255,0, .45);
   margin: auto;
+  width:600px;
+  height:350px;
 }
 #display {
   border: 1px solid black;
-  background-color: rgba(0,200,0, 1);
+  background-color: rgba(233, 218, 15, 0);
   
 }
 #taskDisplay {
@@ -65,42 +68,47 @@ body {
 button {
   display: inline-block;
   padding:0.5em 3em;
-  border:0.16em solid #ffffff;
+  border:0.16em solid #000;
   margin: 0 0.3em 0.3em 0;
   box-sizing: border-box;
   text-decoration:none;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
   font-weight:400;
-  color:#ffffff;
+  color:#000;
   text-align:center;
   transition: all 0.15s;
   background-color: rgba(0,200,0, 0);
   cursor: pointer;
 }
 button:hover{
-  color:#ddd;
-  border-color:#ddd;
+  color:#555;
+  border-color:#555;
 }
 button:active{
-  color:#bbb;
-  border-color:#bbb;
+  color:#666;
+  border-color:#666;
 }
 #refreshButton{
   
   display: inline-block;
   padding:0.5em 3em;
-  border:0.16em solid #ffffff;
+  border:0.16em solid #000;
   margin: 0 0.3em 0.3em 0;
   box-sizing: border-box;
   text-decoration:none;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
   font-weight:400;
-  color:#ffffff;
+  color:#000;
   text-align:center;
   transition: all 0.15s;
   background-color: rgba(0,200,0, 0);
   cursor: pointer;
 
+}
+
+#taskBoard{
+  padding: 1em;
+  
 }
