@@ -138,6 +138,31 @@ function noTasks() {
 }
 function tasks() {
   console.log('yes')
+
+  // keyboard support for task board
+
+  document.addEventListener('keypress', (key)=> {
+    let code = key.keyCode;
+  console.log(code);
+  switch(code){
+    case 43:
+      taskCounter++
+      taskDisplay.innerText = `${taskCounter}`
+      break;
+    case 45:
+      taskCounter--
+      taskDisplay.innerText = `${taskCounter}`
+      break;
+    default:
+      break;
+  }
+    
+  })
+
+  
+    
+  
+
   updateDisplay();
   let addButton = document.createElement('button')
   addButton.innerHTML = '+';
@@ -155,6 +180,7 @@ function tasks() {
     taskCounter++
     taskDisplay.innerText = `${taskCounter}`
   })
+
   subButton.addEventListener('click', ()=>{
     taskCounter--
     taskDisplay.innerText = `${taskCounter}`
@@ -185,7 +211,7 @@ function counterOption(){
 
 window.onload = () => {
   cycleSlider.value = 1;
-  setBubble();
+  setBubble(cycleSlider, bubble);
 }
 
 cycleSlider.oninput = () =>{
@@ -193,8 +219,9 @@ cycleSlider.oninput = () =>{
 }
 
 continueButton.addEventListener('click', counterOption);
-
+/*
 const allRanges = document.querySelectorAll(".range-wrap");
+
 allRanges.forEach(wrap => {
   const range = wrap.querySelector(".range");
   const bubble = wrap.querySelector(".bubble");
@@ -204,14 +231,47 @@ allRanges.forEach(wrap => {
   });
   setBubble(range, bubble);
 });
+*/
+
+
+const bubble = document.querySelector('.bubble');
+cycleSlider.addEventListener('input', ()=> {
+  setBubble(cycleSlider, bubble);
+});
+setBubble(cycleSlider, bubble);
+
 
 function setBubble(range, bubble) {
   const val = range.value;
   const min = range.min ? range.min : 0;
   const max = range.max ? range.max : 100;
   const newVal = Number(((val - min) * 100) / (max - min));
+  setduration();
   bubble.innerHTML = `${duration}<br> Minutes`;
 
   // Sorta magic numbers based on size of the native UI thumb
   bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
 }
+
+// slider keyboard support
+
+document.addEventListener('keypress', key => {
+  let code = key.keyCode;
+  console.log(code);
+  switch(code){
+    case 49:
+      cycleSlider.value = 1;
+      setBubble(cycleSlider, bubble);
+      break;
+    case 50:
+      cycleSlider.value = 2;
+      setBubble(cycleSlider, bubble);
+      break;
+    case 51:
+      cycleSlider.value = 3; 
+      setBubble(cycleSlider, bubble);
+      break;
+    default:
+      break;
+  }
+})
