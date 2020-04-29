@@ -14,9 +14,11 @@ h1{
 .range-wrap {
   position: relative;
   margin: 0 auto 3rem;
+  padding-top: 2em;
 }
 .range {
   width: 100%;
+  
 }
 .bubble {
   background: red;
@@ -50,12 +52,23 @@ body {
   background-color: rgba(0,255,0, .45);
   margin: auto;
   width:600px;
-  height:350px;
+  height:400px;
 }
 #display {
   border: 1px solid black;
   background-color: rgba(233, 218, 15, 0);
   
+}
+
+#displayTitle{
+  background-color: rgba(0,255,0, .90);
+  padding: .1em;
+  margin: 0;
+  
+}
+#displayContent{
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 #taskDisplay {
   display: block;
@@ -84,6 +97,7 @@ button {
 button:hover{
   color:#555;
   border-color:#555;
+  background-color:greenyellow;
 }
 button:active{
   color:#666;

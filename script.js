@@ -92,7 +92,7 @@ function setUpWorkTimer(limit){
 }
  
 function setUpBreakTimer(breakLimit){
-  breakLimit *= 1;
+  breakLimit *= 60;
   timerDisplay.innerHTML = `${parseInt(breakLimit /60, 10)}:${parseInt(breakLimit % 60, 10)}`;
   let countdown = setInterval(()=>{
     timerDisplay.innerHTML = `${parseInt(breakLimit /60, 10)}:${parseInt(breakLimit % 60, 10)}`;
